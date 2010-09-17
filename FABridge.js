@@ -1,5 +1,4 @@
 /*
-/*
 Copyright 2006 Adobe Systems Incorporated
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
@@ -559,7 +558,6 @@ FABridge.prototype =
                 FABridge.refCount--;
             }
             throw new Error(myErrorMessage[1]);
-            return value;
         }
         else
         {
