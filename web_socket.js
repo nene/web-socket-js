@@ -137,9 +137,9 @@
   /**
    * Implementation of {@link <a href="http://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-registration">DOM 2 EventTarget Interface</a>}
    *
-   * @param {string} type
-   * @param {function} listener
-   * @param {boolean} useCapture !NB Not implemented yet
+   * @param {String} type
+   * @param {Function} listener
+   * @param {Boolean} useCapture !NB Not implemented yet
    * @return void
    */
   WebSocket.prototype.addEventListener = function(type, listener, useCapture) {
@@ -159,9 +159,9 @@
   /**
    * Implementation of {@link <a href="http://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-registration">DOM 2 EventTarget Interface</a>}
    *
-   * @param {string} type
-   * @param {function} listener
-   * @param {boolean} useCapture NB! Not implemented yet
+   * @param {String} type
+   * @param {Function} listener
+   * @param {Boolean} useCapture NB! Not implemented yet
    * @return void
    */
   WebSocket.prototype.removeEventListener = function(type, listener, useCapture) {
@@ -224,8 +224,8 @@
   };
 
   /**
-   * @param {object} object
-   * @param {string} type
+   * @param {Object} object
+   * @param {String} type
    */
   WebSocket.prototype.__createEventHandler = function(object, type) {
     return function(data) {
@@ -279,9 +279,9 @@
 
   /**
    *
-   * @param {string} eventTypeArg
-   * @param {boolean} canBubbleArg
-   * @param {boolean} cancelableArg
+   * @param {String} eventTypeArg
+   * @param {Boolean} canBubbleArg
+   * @param {Boolean} cancelableArg
    * @return void
    */
   WebSocketEvent.prototype.initEvent = function(eventTypeArg, canBubbleArg, cancelableArg) {
