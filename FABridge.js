@@ -20,7 +20,7 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 /*
  * The Bridge class, responsible for navigating AS instances
  */
-function FABridge(target,bridgeName)
+window.FABridge = function(target,bridgeName)
 {
     this.target = target;
     this.remoteTypeCache = {};
@@ -67,13 +67,13 @@ FABridge.argsToArray = function(args)
     return result;
 }
 
-function instanceFactory(objID)
+window.FABridge__instanceFactory = function(objID)
 {
     this.fb_instance_id = objID;
     return this;
 }
 
-function FABridge__invokeJSFunction(args)
+window.FABridge__invokeJSFunction = function(args)
 {  
     var funcID = args[0];
     var throughArgs = args.concat();//FABridge.argsToArray(arguments);
@@ -102,7 +102,7 @@ FABridge.addInitializationCallback = function(bridgeName, callback)
 }
 
 // updated for changes to SWFObject2
-function FABridge__bridgeInitialized(bridgeName) {
+window.FABridge__bridgeInitialized = function(bridgeName) {
     var objects = document.getElementsByTagName("object");
     var ol = objects.length;
     var activeObjects = [];
@@ -348,8 +348,8 @@ FABridge.prototype =
     createProxy: function(objID, typeName)
     {
         var objType = this.getTypeFromName(typeName);
-	        instanceFactory.prototype = objType;
-	        var instance = new instanceFactory(objID);
+        FABridge__instanceFactory.prototype = objType;
+        var instance = new FABridge__instanceFactory(objID);
         this.remoteInstanceCache[objID] = instance;
         return instance;
     },
@@ -362,7 +362,7 @@ FABridge.prototype =
     // accepts a type structure, returns a constructed type
     addTypeDataToCache: function(typeData)
     {
-        newType = new ASProxy(this, typeData.name);
+        var newType = new ASProxy(this, typeData.name);
         var accessors = typeData.accessors;
         for (var i = 0; i < accessors.length; i++)
         {
@@ -570,7 +570,7 @@ FABridge.prototype =
 
 // The root ASProxy class that facades a flash object
 
-ASProxy = function(bridge, typeName)
+window.ASProxy = function(bridge, typeName)
 {
     this.bridge = bridge;
     this.typeName = typeName;
